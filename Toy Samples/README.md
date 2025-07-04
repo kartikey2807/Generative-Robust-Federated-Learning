@@ -10,7 +10,8 @@
 <p float="left">
 <img src="images/gen_6000.png" width="200" />
 <img src="images/gen_9000.png" width="200" />
-<img src="images/gen_12000.png"width="200" />
+<img src="images/gen_12000.png"width="200" /></p>
+<p float="left">
 <img src="images/gen_15000.png"width="200" />
 <img src="images/gen_18000.png"width="200" />
 <img src="images/gen_21000.png"width="200" /></p>
