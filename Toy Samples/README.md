@@ -20,4 +20,4 @@
 
 **Critic Loss Trend**
 <p float="left">
-<img src="critic_loss.png" width="608" /></p>
+<img src="images/critic_loss.png" width="608" /></p>
