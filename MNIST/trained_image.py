@@ -53,14 +53,8 @@ for epoch in range(EPOCHS): ##[CONFIG]
         fake_loss.backward()
         optimizer_gen.step()
     
-    ## evaluation Add device=DEVICE to noise
-    ## when running on cuda
     critic.eval()
     generator.eval()
     x,y = next(iter(train_loader))
-    z = torch.randn(y.shape[0], Z_DIM, 1, 1)
+    z = torch.randn(y.shape[0], Z_DIM, 1, 1).to(DEVICE)
     tls.append(eval(x,y,z,critic,generator))
-
-plt.plot(range(EPOCHS), tls)
-plt.show()
-############################################

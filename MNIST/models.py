@@ -39,12 +39,6 @@ class Critic(nn.Module):
             input = lays(input)
         return input ## Nx1x4x4
 
-## x = torch.randn(10,1,64,64)
-## y = torch.randint(0,10,(10,))
-## critic = Critic(1,[2,4,8,16,32,1],10,4096,64)
-## print(summary(critic, [x,y]))
-################################################
-
 class Generator(nn.Module):
     def __init__(self, z_dim, channelList, label, embedding):
         super().__init__()
@@ -73,9 +67,3 @@ class Generator(nn.Module):
         for lays in self.layer:
             input = lays(input)
         return input##Nx1x64x64
-
-## z = torch.randn(10,128,1,1)
-## y = torch.randint(0,10,(10,))
-## generator = Generator(128,[32,16,8,4,2,1],10,128)
-## print(summary(generator, [z,y]))
-################################################
