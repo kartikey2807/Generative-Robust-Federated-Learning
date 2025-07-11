@@ -1,22 +1,19 @@
 # MNIST dataset 
-* Generate handwritten digit images
-* Hard to fine-tune
-* Train for more epochs (>=400)
-* Hard to generate digit *8* and *9*
-* These digits get learned at about 300 epochs
+* Critic does not have Sigmoid
+* Train for about 100 epochs
+* Hard to generate digits *8* and *9*
+* These digits get learned at about 200 epochs
 ---
 
 **Observations**
-
-Images generated at epochs = *5*, *50*, *150*, and *200*, respectively.
-
+Following images were generated after 100 epochs. Top ones are generated, and bottom ones are real.
 <p float="left">
-<img src="images/sample8.png" width="200" />
-<img src="images/sample6.png" width="200" />
-<img src="images/sample1.png" width="200" />
-<img src="images/sample9.png" width="200" /></p>
+<img src="images/sample_1_fake.png" width="200" />
+<img src="images/sample_2_fake.png" width="200" />
+<img src="images/sample_3_fake.png" width="200" />
+<img src="images/sample_4_fake.png" width="200" /></p>
 <p float="left">
-<img src="images/sample8_real.png" width="200" />
-<img src="images/sample6_real.png" width="200" />
-<img src="images/sample1_real.png" width="200" />
-<img src="images/sample9_real.png" width="200" /></p>
+<img src="images/sample_1_real.png" width="200" />
+<img src="images/sample_2_real.png" width="200" />
+<img src="images/sample_3_real.png" width="200" />
+<img src="images/sample_4_real.png" width="200" /></p>
