@@ -6,7 +6,7 @@
 ---
 
 **Observations**
-Following images were generated after 100 epochs. Top ones are generated, and bottom ones are real.
+Following images were generated after *100* epochs. Top ones are generated, and bottom ones are real.
 <p float="left">
 <img src="images/sample_1_fake.png" width="200" />
 <img src="images/sample_2_fake.png" width="200" />
