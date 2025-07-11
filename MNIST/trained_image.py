@@ -56,5 +56,7 @@ for epoch in range(EPOCHS): ##[CONFIG]
     critic.eval()
     generator.eval()
     x,y = next(iter(train_loader))
+    x = x.to(DEVICE)
+    y = y.to(DEVICE)
     z = torch.randn(y.shape[0], Z_DIM, 1, 1).to(DEVICE)
     tls.append(eval(x,y,z,critic,generator))
