@@ -1,6 +1,7 @@
-## Contains dataset and weight initializations
-## MNIST Dataset is used with minor transforms
-## eval(....) computes  loss during validation
+## Contains weight initialization for MNIST
+## dataset is and has minor transformations
+## eval(..) computes loss during validation
+## Also, gradient penalty is implemented.
 
 import torch
 import torch.nn as nn

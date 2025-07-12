@@ -1,8 +1,7 @@
-## WGAN based Critic and Generator model. Adding
-## spectral normalization. Will use trans/Conv2D
-## and Batch normalization for models.  Test the
-## model. Since the image are not so complicated
-## will stick to small number of channels.
+## WGAN-GP based Critic and Generator models
+## Will use conv2D for former / Trans-Conv2D 
+## for later (Generator). Apply linear layer
+## to make simpler models &use less channels
 
 import torch
 import torch.nn as nn

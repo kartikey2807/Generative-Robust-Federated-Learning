@@ -11,4 +11,5 @@ BATCH_SIZE = 256
 EPOCHS = 21000
 IMP = 0.02
 CRITIC_ITERS = 5
+LAMBDA_GP = 10 ## given in WGAN paper
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
