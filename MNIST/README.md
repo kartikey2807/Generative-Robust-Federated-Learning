@@ -1,19 +1,20 @@
 # MNIST dataset 
-* Critic does not have Sigmoid
-* Train for about 100 epochs
-* Hard to generate digits *8* and *9*
-* These digits get learned at about 200 epochs
+* Diverse samples per label
+* Hard to generate digit *'8'*
+* Uses Wasserstein loss objective
+* gradient_penalty() satisfies 1-Lipschitz constraint
 ---
 
 **Observations**
-Following images were generated after *100* epochs. Top ones are generated, and bottom ones are real.
+Generated samples (after *30* epochs)
 <p float="left">
-<img src="images/sample_1_fake.png" width="200" />
-<img src="images/sample_2_fake.png" width="200" />
-<img src="images/sample_3_fake.png" width="200" />
-<img src="images/sample_4_fake.png" width="200" /></p>
+<img src="images/sample_1.png" width="200" />
+<img src="images/sample_2.png" width="200" />
+<img src="images/sample_3.png" width="200" />
+<img src="images/sample_4.png" width="200" /></p>
+
 <p float="left">
-<img src="images/sample_1_real.png" width="200" />
-<img src="images/sample_2_real.png" width="200" />
-<img src="images/sample_3_real.png" width="200" />
-<img src="images/sample_4_real.png" width="200" /></p>
+<img src="images/sample_5.png" width="200" />
+<img src="images/sample_6.png" width="200" />
+<img src="images/sample_7.png" width="200" />
+<img src="images/sample_8.png" width="200" /></p>
