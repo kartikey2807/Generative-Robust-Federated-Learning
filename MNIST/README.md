@@ -2,7 +2,7 @@
 * Diverse samples per label
 * Hard to generate digit *'8'*
 * Uses Wasserstein loss objective
-* gradient_penalty(...) satisfies 1-Lipschitz constraint
+* `gradient_penalty()` satisfies 1-Lipschitz constraint
 ---
 
 **Observations**   
