@@ -20,16 +20,17 @@ class Critic(nn.Module):
 
         assert self.embedding == self.imsize*self.imsize
 
-        self.embed = nn.Embedding(self.label, self.embedding)
+        self.embed = nn.Embedding(self.label,self.embedding)
         self.layer = nn.Sequential(
             self._blocks(self.inp_ch+1, self.chList[0]),
             self._blocks(self.chList[0],self.chList[1]),
             self._blocks(self.chList[1],self.chList[2]),
+            self._blocks(self.chList[2],self.chList[3]),
             nn.Flatten(),
-            spectral_norm(nn.Linear(self.chList[2]*8*8,1))) ## specific for MNIST
+            nn.Linear(self.chList[3]*4*4, 1))
         
     def _blocks(self, i, o):
-        return nn.Sequential(spectral_norm(nn.Conv2d(i,o,4,2,1)),nn.BatchNorm2d(o),nn.LeakyReLU(0.2))
+        return nn.Sequential(nn.Conv2d(i,o,4,2,1),nn.LeakyReLU(0.2))
     
     def forward(self, x, y):
         shape = (-1,1,self.imsize,self.imsize)
@@ -44,20 +45,23 @@ class Generator(nn.Module):
         self.embedding = embedding
 
         self.embed = nn.Embedding(self.label, self.embedding)
-
         self.layer = nn.Sequential(
-            self._blocks(self.z_dim+self.embedding,self.chList[0]),
             self._blocks(self.chList[0],self.chList[1]),
             self._blocks(self.chList[1],self.chList[2]),
             self._blocks(self.chList[2],self.chList[3]),
-            self._blocks(self.chList[3],self.chList[4]),
-            self._blocks(self.chList[4],1)) ## 1x64x64
+            self._blocks(self.chList[3],1))
+        self.fc_01 = nn.Linear(self.z_dim+self.embedding,self.chList[0]*4*4)
     
     def _blocks(self, i, o):
         if o == 1:
-            return nn.Sequential(nn.ConvTranspose2d(i,o,4,2,1),nn.Tanh())
+            return nn.Sequential(nn.ConvTranspose2d(i,o,4,2,1),
+                                 nn.Tanh())
         else:
-            return nn.Sequential(nn.ConvTranspose2d(i,o,4,2,1),nn.BatchNorm2d(o),nn.LeakyReLU(0.2))
+            return nn.Sequential(nn.ConvTranspose2d(i,o,4,2,1),
+                                 nn.BatchNorm2d(o), nn.ReLU())
     
     def forward(self, z, y):
-        return self.layer(torch.cat([z,self.embed(y).unsqueeze(2).unsqueeze(3)], dim=1))
+        input = torch.cat([z,self.embed(y)], dim=1)
+        input = self.fc_01(input)
+        input = torch.reshape(input,(-1,self.chList[0], 4, 4))
+        return self.layer(input)

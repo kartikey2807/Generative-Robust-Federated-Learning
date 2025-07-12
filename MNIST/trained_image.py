@@ -25,8 +25,8 @@ train_loader = DataLoader(train_dataset, BATCH_SIZE, shuffle=True)
 
 critic = Critic(IN_CHANNELS,CRITIC_CHANNEL_LIST,LABEL,CRITIC_EMBEDDING,IMAGE_SIZE).to(DEVICE)
 generator = Generator(Z_DIM,GENERATOR_CHANNEL_LIST,LABEL,GENERATOR_EMBEDDING).to(DEVICE)
-optimizer_critic = Adam(critic.parameters(),lr=LEARNING_RATE, betas=(0.0,0.9)) ##WGAN-GP
-optimizer_gen = Adam(generator.parameters(),lr=LEARNING_RATE, betas=(0.0,0.9)) ##paper
+optimizer_critic = Adam(critic.parameters(),lr=LEARNING_RATE, betas=(0.0,0.9))
+optimizer_gen = Adam(generator.parameters(),lr=LEARNING_RATE, betas=(0.0,0.9))
 
 weight_initialization(critic)
 weight_initialization(generator)
@@ -36,19 +36,22 @@ for epoch in range(EPOCHS): ##[CONFIG]
     for i, (x, y) in enumerate(train_loader):
         x = x.to(DEVICE)
         y = y.to(DEVICE)
+
         ## train critic
         critic.train()
         generator.train()
         for _ in range(CRITIC_ITER):
-            z = torch.randn(y.shape[0],Z_DIM,1,1).to(DEVICE)
+            z = torch.randn(y.shape[0],Z_DIM).to(DEVICE)
             fake = generator(z,y)
             real_loss = critic(x,y)
             fake_loss = critic(fake,y)
-            critic_loss = -(torch.mean(real_loss) - torch.mean(fake_loss))
+            gp = gradient_penalty(critic,x,fake,y,DEVICE)
+            critic_loss = -(real_loss.mean()-fake_loss.mean()) + LAMBDA_GP*gp
             optimizer_critic.zero_grad()
             critic_loss.backward(retain_graph=True)
             optimizer_critic.step()
-        fake_loss=-torch.mean(critic(fake,y))
+        
+        fake_loss = -torch.mean(critic(fake,y))
         optimizer_gen.zero_grad()
         fake_loss.backward()
         optimizer_gen.step()
@@ -58,5 +61,5 @@ for epoch in range(EPOCHS): ##[CONFIG]
     x,y = next(iter(train_loader))
     x = x.to(DEVICE)
     y = y.to(DEVICE)
-    z = torch.randn(y.shape[0], Z_DIM, 1, 1).to(DEVICE)
+    z = torch.randn(y.shape[0],Z_DIM).to(DEVICE)
     tls.append(eval(x,y,z,critic,generator))
