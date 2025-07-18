@@ -3,12 +3,18 @@
 * hard to generate *'car'* samples
 ---
 **Observations**   
-Generated samples (after 150 epochs). Classes - 
+Generated samples after **150 epochs** for labels: *frog*, *dog*, *horse*, *airplane*, *ship*, and *trucks*.
 <p float="left">
-<img src="images/sample_1_fake.png" width="200" />
-<img src="images/sample_2_fake.png" width="200" />
-<img src="images/sample_3_fake.png" width="200" /></p>
+<img src="images/sample_1_fake.png" width="100" />
+<img src="images/sample_2_fake.png" width="100" />
+<img src="images/sample_3_fake.png" width="100" />
+<img src="images/sample_4_fake.png" width="100" />
+<img src="images/sample_5_fake.png" width="100" />
+<img src="images/sample_6_fake.png" width="100" /></p>
 <p float="left">
-<img src="images/sample_1_real.png" width="200" />
-<img src="images/sample_2_real.png" width="200" />
-<img src="images/sample_3_real.png" width="200" /></p>
+<img src="images/sample_1_real.png" width="100" />
+<img src="images/sample_2_real.png" width="100" />
+<img src="images/sample_3_real.png" width="100" />
+<img src="images/sample_4_real.png" width="100" />
+<img src="images/sample_5_real.png" width="100" />
+<img src="images/sample_6_real.png" width="100" /></p>
