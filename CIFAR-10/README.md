@@ -3,7 +3,7 @@
 * hard to generate *'car'* samples
 ---
 **Observations**   
-Generated samples after **150 epochs** for labels: *frog*, *dog*, *horse*, *airplane*, *ship*, and *trucks*.
+Generated samples for label: *frog*, *dog*, *horse*, *airplane*, *ship*, and *trucks*. `top: fake and bottom: real`
 <p float="left">
 <img src="images/sample_1_fake.png" width="100" />
 <img src="images/sample_2_fake.png" width="100" />
