@@ -1,6 +1,6 @@
 ## CIFAR-10 dataset
 * ran for 150 epochs
-* hard to generate *'car'* samples
+* hard to generate *'cat'* and *'dog'* samples
 * [Kaggle Notebook](https://www.kaggle.com/code/kartikeysharmaah/1dt114-notebook-1)
 ---
 **Observations**   
