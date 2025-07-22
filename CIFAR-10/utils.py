@@ -45,11 +45,14 @@ def gradient_penalty(critic, real, fake, label, device):
 def plot(real, fake):
     real_np = make_grid(real*0.5 + 0.5).permute(1,2,0)
     fake_np = make_grid(fake*0.5 + 0.5).permute(1,2,0)
+    plt.figure(figsize=(15,15))
     plt.imshow(fake_np.cpu().numpy())
     plt.title('Fake')
+    plt.axis('off')
     plt.show()
     plt.imshow(real_np.cpu().numpy())
     plt.title('Real')
+    plt.axis('off')
     plt.show()
 
 def eval(real, noise, label, critic, generator, epoch):
@@ -66,7 +69,8 @@ def eval(real, noise, label, critic, generator, epoch):
     gp = gradient_penalty(critic,real,fake,label,DEVICE)
     critic_loss = -(real_loss.mean() - fake_loss.mean()) + LAMBDA_GP*gp
     print(f'Epoch:{epoch}/{EPOCHS} |\t Critic Loss: {critic_loss:.4f}')
-    plot(real, fake)
+    if (epoch+1)%10 == 0:
+        plot(real, fake)
 
 def weight_initialization(model):
     for m in model.modules():

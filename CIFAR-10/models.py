@@ -1,4 +1,4 @@
-## WGAN-GP implementation similar as MNIST
+## WGAN-GP implementation similar as CIFAR
 ## dataset. Main difference is that images
 ## are colored(3 channels) and complicated
 
@@ -78,7 +78,9 @@ class Generator(nn.Module):
         assert len(self.gen_chn) == 4
         self.embed = nn.Embedding(self.label,self.embedding)
         self.fc_01 = nn.Sequential(
-            nn.Linear(self.noise+self.embedding,self.gen_chn[0]*2*2),
+            nn.Linear(self.noise+self.embedding,4096),
+            nn.BatchNorm1d(4096), nn.ReLU(),
+            nn.Linear(4096,self.gen_chn[0]*2*2),
             nn.BatchNorm1d(self.gen_chn[0]*2*2), nn.ReLU())
         self.layer = nn.ModuleList([
             _Block(self.gen_chn[0],self.gen_chn[1],trans=True),
