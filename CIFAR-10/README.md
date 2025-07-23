@@ -1,5 +1,5 @@
 ## CIFAR-10 dataset
-* Very hard to tune
+* very hard to tune
 * ran for 150 epochs
 * hard to generate *'cat'* and *'dog'* samples
 * *'horses'* are easy to generate
