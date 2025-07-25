@@ -1,8 +1,8 @@
 ## CIFAR-10 dataset
-* very hard to tune
-* ran for 150 epochs
+* Hard to fine-tune **WGAN-GP**
+* sensitive to hyperparameters
 * hard to generate *'cat'* and *'dog'* samples
-* *'horses'* are easy to generate
+* easy to generate *'horse'* and *'planes'*
 ---
 **Observations**   
 Generated samples for labels: *frog*, *cars*, *horse*, *airplane*, *ships*, and *trucks*.
