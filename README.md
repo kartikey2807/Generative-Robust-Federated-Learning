@@ -1,4 +1,4 @@
-## WGAN-GP vs Denoising Diffusion (DDPMs)
+# WGAN-GP vs Denoising Diffusion (DDPMs)
 * ran on MNIST and CIFAR-10 datasets
 * Both Models perform well on MNIST
 * For CIFAR-10, WGAN-GP suffer from
