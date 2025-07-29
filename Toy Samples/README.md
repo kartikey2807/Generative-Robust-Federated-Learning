@@ -1,8 +1,8 @@
 # Toy Samples
-* Generated toy samples using sklearn
-* Trained conditional WGAN-GP
-* Produce diverse samples, and
-* Added **Inter-Sample distance**
+* Generated Toy samples using Sklearn
+* trained on the conditional WGAN-GP
+* produces diverse samples; gen loss is
+* $G_{loss} = -f(G(z|y)|y) - \sum_{i,j} |G(z_i|y_i) - G(z_j|y_j)|_2$
 ---
 
 **Observations**   
@@ -15,5 +15,3 @@ Generated samples for *7000* iterations
 <img src="images/sample_5.png" width="200" />
 <img src="images/sample_6.png" width="200" />
 <img src="images/sample_7.png" width="200" /></p>
-
----
