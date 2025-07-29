@@ -31,7 +31,7 @@ class _Block(nn.Module):
                 nn.Tanh())
     def forward(self, x):
         return self.layer(x)
-        
+    
 class Critic(nn.Module):
     def __init__(self, chn, label, embedding, imsize,in_ch=3):
         super().__init__()
