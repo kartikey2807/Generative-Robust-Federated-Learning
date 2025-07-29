@@ -11,12 +11,10 @@ import numpy as np
 class _Block(nn.Module):
     def __init__(self, in_ch, out, trans = False, last=False):
         super().__init__()
-
         self.in_ch = in_ch
         self.out = out
         self.last = last
         self.trans = trans
-
         self.layer = None
         if not trans:
             self.layer = nn.Sequential(
@@ -37,7 +35,6 @@ class _Block(nn.Module):
 class Critic(nn.Module):
     def __init__(self, chn, label, embedding, imsize,in_ch=3):
         super().__init__()
-
         self.chn = chn
         self.label = label
         self.embedding = embedding
@@ -67,14 +64,12 @@ class Critic(nn.Module):
         return x ## BATCHx1
 
 class Generator(nn.Module):
-    def __init__(self, noise, gen_chn, label, embedding):
+    def __init__(self, noise, gen_chn, label, embedding=256):
         super().__init__()
-
         self.noise = noise
         self.label = label
         self.gen_chn = gen_chn
         self.embedding = embedding
-
         assert len(self.gen_chn) == 4
         self.embed = nn.Embedding(self.label,self.embedding)
         self.fc_01 = nn.Sequential(
